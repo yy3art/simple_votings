@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_name }}</title>
+</head>
+<body>
+    <header>
+<!--        Здесь будет меню-->
+        {% include 'base_htmls/menu.html'%}
+    </header>
+    <main>
+        {% block main %}
+        {% endblock %}
+<!--        Здесь будет наполнение страницы-->
+    </main>
+    <footer>
+<!--        что-то-->
+    </footer>
+</body>
+</html>

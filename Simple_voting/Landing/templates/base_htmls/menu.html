@@ -1,0 +1,10 @@
+<h1>Текущая страница - {{ page_name }}</h1>
+<ul>
+    {% for menu_item in menu %}
+    {% if menu_item != page_name %}
+    <li>
+        <a href="{{ menu_item.url }}">{{ menu_item.text }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
