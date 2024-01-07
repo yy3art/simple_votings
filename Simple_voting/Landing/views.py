@@ -5,7 +5,8 @@ from django.http import HttpRequest, HttpResponse
 def default_menu() -> tuple:
     return (
              {'url': '/', 'text': 'Главная'},
-             {'url': '/vote/', 'text': 'Голосовалка'}
+             {'url': '/vote/', 'text': 'Голосовалка'},
+             {'url': '/login/', 'text': 'Авторизация'}
     )
 
 
@@ -18,3 +19,6 @@ def voting_page(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Голосовалка', 'menu': default_menu()}
     return render(request, 'voting.html', context)
 
+def authorization_page(request: HttpRequest) -> HttpResponse:
+    context = {'page_name': 'Авторизация', 'menu': default_menu()}
+    return render(request, 'authorization.html', context)
