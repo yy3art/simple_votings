@@ -1,0 +1,54 @@
+.info_block {
+    color: green;
+    padding: 20px;
+    background: orange;
+    border: 2px solid black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+}
+
+.button {
+    background-color:rgb(0, 182, 127);
+    border: none;
+    color: white;
+    padding: 30px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin: 1% 50px 1% 70%;
+    cursor: pointer;
+}
+
+.name_block_text {
+    font-size: 40px;
+    padding: 0;
+    margin-left: 10px;
+    text-align: left;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    border-bottom: 1px solid black;
+    height: 120px;
+}
+
+.main_block {
+    margin: 20px 20px 20px 20px;
+    background-color: rgb(65, 187, 187);
+    text-align:left;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    padding: 1%;
+}
