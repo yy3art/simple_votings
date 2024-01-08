@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ page_name }}</title>
+    {% block additional_css %}
+    {% endblock %}
 </head>
 <body>
     <header>
-<!--        Здесь будет меню-->
-        {% include 'base_htmls/menu.html'%}
+        {% include 'base_htmls/header.html'%}
     </header>
     <main>
+        {% include 'base_htmls/menu.html'%}
         {% block main %}
         {% endblock %}
 <!--        Здесь будет наполнение страницы-->

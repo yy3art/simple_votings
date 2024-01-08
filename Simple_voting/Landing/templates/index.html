@@ -1,5 +1,10 @@
 {% extends 'base_htmls/base.html' %}
 
+{% load static %}
+
+{% block additional_css %}
+<link rel="stylesheet" href=" {% static 'css/style.css'%}">
+{% endblock %}
+
 {% block main %}
-<h1>Добро пожаловать</h1>
 {% endblock %}
