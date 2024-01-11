@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ page_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'Landing/css/style.css' %}">
 </head>
 <body>
     <header>
-<!--        Здесь будет меню-->
-        {% include 'base_htmls/menu.html'%}
+        {% include 'base_htmls/header.html'%}
     </header>
     <main>
         {% block main %}
         {% endblock %}
-<!--        Здесь будет наполнение страницы-->
     </main>
     <footer>
 <!--        что-то-->
