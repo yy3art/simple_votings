@@ -6,7 +6,7 @@ def default_menu() -> tuple:
     return (
              {'url': '/', 'text': 'Главная'},
              {'url': '/vote/', 'text': 'Голосовалка'},
-             {'url': '/login/', 'text': 'Авторизация'}
+             {'url': '/login/', 'text': 'Авторизация'},
     )
 
 
