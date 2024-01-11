@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Landing import views
-from simple_voting.Simple_voting.Landing.views import authorization_page
+# from simple_voting.Simple_voting.Landing.views import authorization_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
