@@ -58,13 +58,16 @@ header {
     height: 50px;
     width: 230px;
     text-align: center;
+    vertical-align: middle;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
     transition: all .5s;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     margin-right: 10px;
-    display:inline-block;
+    display:flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .register_button:hover {
