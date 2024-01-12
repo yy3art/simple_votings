@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Landing import views
-
-
+from Landing import views # Тут нужно забить на ошибку
+# from simple_voting.Simple_voting.Landing.views import authorization_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_page),
+    path('login/', views.authorization_page),
+    path('registr/', views.registration_page),
     path('vote/', views.voting_page),
 ]
