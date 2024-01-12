@@ -5,12 +5,13 @@
     border: 2px solid black;
 }
 
-* {
+/* * {
     box-sizing: border-box;
-}
+} */
 
 .container {
-    display: flex;
+    /* display: flex; */
+    padding-bottom: 40px;
 }
 
 .name_block_text {
@@ -32,7 +33,7 @@ header {
 }
 
 .main_block {
-    display: flex;
+    /* display: flex; */
 }
 
 .main_block_text {
