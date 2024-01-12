@@ -22,6 +22,7 @@ from Landing import views # Тут нужно забить на ошибку
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_page),
-    path('vote/', views.voting_page),
     path('login/', views.authorization_page),
+    path('registr/', views.registration_page),
+    path('vote/', views.voting_page),
 ]
