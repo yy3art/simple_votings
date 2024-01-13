@@ -1,6 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base_htmls/base.html' %}
+
+{% block main %}
+
+
+
+
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
@@ -56,8 +62,7 @@
       cursor: pointer;
     }
   </style>
-</head>
-<body>
+
 
   <div class="header">
     <div class="label">Page Name</div>
@@ -71,6 +76,4 @@
       <a href="link3.html" class="action-button">Button 3</a>
     </div>
   </div>
-
-</body>
-</html>
+{% endblock %}
