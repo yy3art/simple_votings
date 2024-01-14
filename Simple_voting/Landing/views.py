@@ -17,12 +17,9 @@ def index_page(request: HttpRequest) -> HttpResponse:
     return render(request, 'index.html', context)
 
 
-
-
 def authorization_page(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Авторизация', 'menu': default_menu()}
     return render(request, 'authorization.html', context)
-
 
 
 def registration_page(request: HttpRequest) -> HttpResponse:
@@ -33,6 +30,7 @@ def registration_page(request: HttpRequest) -> HttpResponse:
 def voting_page(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Голосовалка', 'menu': default_menu()}
     return render(request, 'voting.html', context)
+
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Список голосований', 'menu': default_menu()}
