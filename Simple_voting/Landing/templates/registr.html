@@ -2,16 +2,20 @@
 {% block main %}
 <h1>Регистрация</h1>
 <div>
+    <form method="POST">
+        {% csrf_token %}
     <div style="display: flex; justify-content: start; padding-left: 20px;">
         <p style="margin-right: 15px;">Введите Логин:</p>
-        <input id="inp_login" type="text">
+        <input id="inp_login" type="text" name="login">
     </div>
     <br>
     <div style="display: flex; justify-content: start; padding-left: 20px;">
         <p style="margin-right: 15px;">Введите Пароль:</p>
-        <input id="inp_password" type="text">
+        <input id="inp_password" type="text" name="password">
     </div>
+    <p><input type="submit" value="Create my account"></p>
     <br>
+        </form>
     <div style="display: flex; justify-content: start; padding-left: 20px;">
         <p style="margin-right: 15px;">Введите номер телефона:</p>
         <input id="inp_tel" type="text">
