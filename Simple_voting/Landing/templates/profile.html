@@ -164,12 +164,44 @@ button:hover, a:hover {
  </button></a></p>
 </div>
 
-<h2>Голосования, в которых участвовал Пользователь:</h2>
+<h2>Голосования, которые создал пользователь:</h2>
 <hr>
 <div>
 
 
-<ul class="c-tile-list">
+<ul class="c-tile-list"> <!-- Список голосований, которые создал пользователь -->
+<!--    Шаблон одной карты-->
+  <li class="c-tile-list__item">
+    <article class="c-article-tile t-sass" itemscope itemtype="http://schema.org/Article">
+      <div class="c-article-tile__header">
+
+        <a class="c-article-tile__comment-count" href="#" itemprop="commentCount">
+          <img style="width: 150px; height: 150px;" class="icon icon-bubble" src="https://cdn.icon-icons.com/icons2/2585/PNG/512/vote_counting_magnifier_icon_154141.png" aria-label="comments">
+        </a>
+      </div>
+
+      <div class="c-article-tile__body">
+        <h2 class="c-article-tile__title" itemprop="headline">
+          <a id="CreateVoteName" href="#">Название Голосования</a>
+        </h2>
+      </div>
+
+      <footer class="c-article-tile__footer">
+        <span class="c-article-tile__author">
+          Создал: <a id="CreateVoteAuthorName" href="#" itemprop="author">Имя того, кто сделал это голосование</a>
+        </span>
+      </footer>
+    </article>
+  </li>
+<!--    Конец Шаблона одной карты-->
+</ul>
+</div>
+<h2>Голосования, в которых участвовал пользователь:</h2>
+<hr>
+<div>
+
+
+<ul class="c-tile-list"> <!-- Список голосований, где участвовал пользователь -->
 <!--    Шаблон одной карты-->
   <li class="c-tile-list__item">
     <article class="c-article-tile t-sass" itemscope itemtype="http://schema.org/Article">
