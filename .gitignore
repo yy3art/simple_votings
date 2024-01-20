@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+Simple_voting/Simple_voting/__pycache__/
 
 # C extensions
 *.so

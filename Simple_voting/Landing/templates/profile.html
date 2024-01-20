@@ -1,0 +1,200 @@
+{% extends 'base_htmls/base.html' %}
+{% block main %}
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+/* -------------------------------------------------------------------------- *\
+ * .c-tile-list
+ * -------------------------------------------------------------------------- */
+
+/**
+ * 1. Reset default list styles
+ * 2. Flexbox used for a grid-like layout for the tiles.
+ */
+.c-tile-list {
+  list-style: none; /* 1 */
+  margin: 0; /* 1 */
+  padding: 0; /* 1 */
+  display: flex; /* 2 */
+  flex-wrap: wrap; /* 2 */
+}
+
+/**
+ * 1. Flexbox used for equal-height tiles on a same line.
+ * 2. Make sure a time never looks distorded.
+ * 3. Spacing between tiles.
+ */
+.c-tile-list__item {
+  display: flex; /* 1 */
+  flex-direction: column; /* 1 */
+  flex: 0 0 300px; /* 2 */
+  margin: 10px; /* 3 */
+}
+
+
+/* -------------------------------------------------------------------------- *\
+ * .c-article-tile
+ * -------------------------------------------------------------------------- */
+
+/**
+ * 1. Make it possible to bottom align the footer in a tile that has a minimum
+ *    height.
+ * 2. Make sure the tile spread across the full height of the parent if inside
+ *    a flex container.
+ */
+.c-article-tile {
+  display: flex; /* 1 */
+  flex-direction: column; /* 1 */
+  flex: 1 0 auto; /* 2 */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+}
+
+.c-article-tile a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.c-article-tile__header,
+.c-article-tile__body,
+.c-article-tile__footer {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.c-article-tile__header,
+.c-article-tile__footer {
+  font-size: 80%;
+}
+
+.c-article-tile__header {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid;
+}
+
+.c-article-tile__category {
+  font-weight: bold;
+}
+
+/**
+ * 1. Right align the comment count container in the header.
+ */
+.c-article-tile__comment-count {
+  margin-left: auto; /* 1 */
+}
+
+.c-article-tile__body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.c-article-tile__title {
+  margin: 0;
+  color: #333;
+  font-size: 150%;
+}
+
+/**
+ * 1. Make the title link inherit the color only when not active / hovered,
+ *    effectively making it themed when active / hovered.
+ */
+.c-article-tile__title:not(:hover):not(:active) > a {
+  color: inherit; /* 1 */
+}
+
+/**
+ * 1. Bottom align the footer in the tile.
+ * 2. Prevent any content from the footer from wrapping, effectively forcing it
+ *    on a single line at all time.
+ */
+.c-article-tile__footer {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  margin-top: auto; /* 1 */
+  white-space: nowrap; /* 2 */
+  color: #949494;
+}
+</style>
+</head>
+<body>
+
+<h2 style="text-align:center">User Profile Card</h2>
+
+<div class="card">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8PyKYrBKAWWy6YCbQzWQcwIRqH8wYMPluIZiMpV1w0NYSbocTZz0ICWFkLcXhaMyvCwQ&usqp=CAU" alt="Avatar" style="width: 90%">
+  <h1 id="UserName">Имя пользователя</h1>
+  <p class="title" id="UserVoteCount"> 0 </p>
+ <p><a href="../vote_link"><button>
+     Голосовать
+ </button></a></p>
+</div>
+
+<h2>Голосования, в которых участвовал Пользователь:</h2>
+<hr>
+<div>
+
+
+<ul class="c-tile-list">
+<!--    Шаблон одной карты-->
+  <li class="c-tile-list__item">
+    <article class="c-article-tile t-sass" itemscope itemtype="http://schema.org/Article">
+      <div class="c-article-tile__header">
+
+        <a class="c-article-tile__comment-count" href="#" itemprop="commentCount">
+          <img style="width: 150px; height: 150px;" class="icon icon-bubble" src="https://cdn.icon-icons.com/icons2/2585/PNG/512/vote_counting_magnifier_icon_154141.png" aria-label="comments">
+        </a>
+      </div>
+
+      <div class="c-article-tile__body">
+        <h2 class="c-article-tile__title" itemprop="headline">
+          <a id="VoteName" href="#">Название Голосования</a>
+        </h2>
+      </div>
+
+      <footer class="c-article-tile__footer">
+        <span class="c-article-tile__author">
+          Создал: <a id="VoteAuthorName" href="#" itemprop="author">Имя того, кто сделал это голосование</a>
+        </span>
+      </footer>
+    </article>
+  </li>
+<!--    Конец Шаблона одной карты-->
+</ul>
+</div>
+
+{% endblock %}
