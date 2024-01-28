@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Авторизация</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'Landing/css/style.css' %}">
-</head>
-<body>
-    <header>
-        {% include 'base_htmls/header.html' %}
-    </header>
-    <main>
-        <form action="/login/" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <br>
-            <input type='submit' value="Войти">
-        </form>
-        {% if errors %}
-            {{ errors }}
-        {% endif %}
-    </main>
-</body>
-</html>
+{% extends 'base_htmls/base.html' %}
+
+{% block main %}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.username.label }}: {{ form.username }}
+        <br>
+        {{ form.password.label }}: {{ form.password }}
+        <br>
+        <input type="submit" value="Войти">
+    </form>
+</div>
+{% endblock %}
