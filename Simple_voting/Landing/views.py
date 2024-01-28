@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
 from django.contrib.auth import authenticate, login, logout
+from Landing import models
 
 
 
@@ -36,7 +37,7 @@ def voting_page(request: HttpRequest) -> HttpResponse:
 
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
-    context = {'page_name': 'Список голосований', 'menu': default_menu()}
+    context = {'page_name': 'Список голосований', 'menu': default_menu(), 'pipka' : [i for i in range(len(models.Voting.objects.all()))]}
     return render(request, 'voting_list.html', context)
 
 
