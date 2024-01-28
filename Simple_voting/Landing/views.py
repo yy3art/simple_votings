@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
+from django.contrib.auth import authenticate, login, logout
+
+
 
 
 def default_menu() -> tuple:
@@ -35,3 +38,5 @@ def voting_page(request: HttpRequest) -> HttpResponse:
 def voting_spispage(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Список голосований', 'menu': default_menu()}
     return render(request, 'voting_list.html', context)
+
+
