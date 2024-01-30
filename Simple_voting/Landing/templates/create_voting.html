@@ -1,0 +1,32 @@
+{% extends 'base_htmls/base.html' %}
+
+{% block main %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание Голосования</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Landing/css/style2.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1>Создание Голосования</h1>
+    </div>
+    <div class="content">
+        <div class="features">
+            <h2>Форма для создания голосования</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.question.label }}:<br>
+                {{ form.question }}<br>
+                {{ form.answer1.label }}:<br>
+                {{ form.answer1 }}<br>
+                {{ form.answer2.label }}:<br>
+                {{ form.answer2 }}<br>
+                
+                <button class="btn btn-success" type="submit">Опубликовать опрос</button>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}
