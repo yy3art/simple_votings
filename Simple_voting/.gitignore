@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 Landing/__pycache__/
 Simple_voting/__pycache__/
+**/__pycache__/
 # C extensions
 *.so
 

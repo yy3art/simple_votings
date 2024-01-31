@@ -78,19 +78,10 @@ def logout_page(request):
 def voting_page(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Голосовалка', 'menu': default_menu()}
     return render(request, 'voting.html', context)
+
 def authorization_page(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Авторизация', 'menu': default_menu()}
     return render(request, 'authorization.html', context)
-
-
-def registration_page(request: HttpRequest) -> HttpResponse:
-    context = {'page_name': 'Регистрация', 'menu': default_menu()}
-    return render(request, 'registr.html', context)
-
-
-def voting_page(request: HttpRequest) -> HttpResponse:
-    context = {'page_name': 'Голосовалка', 'menu': default_menu()}
-    return render(request, 'voting.html', context)
 
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
