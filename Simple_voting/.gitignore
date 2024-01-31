@@ -64,8 +64,6 @@ db.sqlite3
 db.sqlite3-journal
 Landing/migrations/
 Landing/__pycache__/
-Simple_voting/db.sqlite3
-simple_voting\Simple_voting\db.sqlite3
 
 # Flask stuff:
 instance/
