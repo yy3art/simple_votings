@@ -25,4 +25,5 @@ urlpatterns = [
     path('logout/', views.logout_page, name='logout'),
     path('register/', views.register, name='register'),
     path('vote/', views.voting_page),
+    path('vote_link/', views.voting_spispage),
 ]
