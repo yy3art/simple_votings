@@ -5,10 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from Landing import models
 from Landing.forms import CreateVotingForm
 from Landing.models import Voting
-
-
-
-
 #  логин kolkol
 # пароль 12345678-a
 # f
