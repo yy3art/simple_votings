@@ -22,3 +22,5 @@ class Voting(models.Model):
 
 
 # Create your models here.
+
+

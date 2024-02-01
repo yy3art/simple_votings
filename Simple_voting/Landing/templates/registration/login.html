@@ -1,0 +1,14 @@
+{% extends 'base_htmls/base.html' %}
+
+{% block main %}
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.username.label }}: {{ form.username }}
+        <br>
+        {{ form.password.label }}: {{ form.password }}
+        <br>
+        <input type="submit" value="Войти">
+    </form>
+</div>
+{% endblock %}
