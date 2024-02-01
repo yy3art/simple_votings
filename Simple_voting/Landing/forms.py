@@ -27,4 +27,3 @@ class LoginForm(forms.Form):
             }
         )
     )
->>>>>>> main
