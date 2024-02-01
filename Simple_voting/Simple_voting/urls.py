@@ -26,4 +26,5 @@ urlpatterns = [
     path('registr/', views.registration_page),
     path('vote/', views.voting_page),
     path('vote_link/', views.voting_spispage),
+    path('create_voting/', views.create_voting_page)
 ]
