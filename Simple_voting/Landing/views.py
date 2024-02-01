@@ -8,6 +8,11 @@ from django.contrib.auth.forms import AuthenticationForm
 from Landing import forms
 from Landing import models
 
+
+#  логин kolkol
+# пароль 12345678-a
+# f
+
 def default_menu() -> tuple:
     return (
              {'url': '/', 'text': 'Главная'},
