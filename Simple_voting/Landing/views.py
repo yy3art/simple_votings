@@ -95,6 +95,7 @@ def voting_spispage(request: HttpRequest) -> HttpResponse:
     return render(request, 'voting_list.html', context)
 
 
+@login_required
 def create_voting_page(request):
     context = {'page_name': 'Создать голосование', 'menu': default_menu()}
     context['form'] = CreateVotingForm()
