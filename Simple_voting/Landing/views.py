@@ -1,11 +1,15 @@
+import django.contrib.auth
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 
 from django.contrib.auth import authenticate, login, logout
 from Landing import models
+from Landing import forms
 from Landing.forms import CreateVotingForm
 from Landing.models import Voting
-
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 
@@ -110,6 +114,8 @@ def create_voting_page(request):
         voting.count_all = 0
         voting.persent_1 = 0.0
         voting.persent_2 = 0.0
+        voting.user = django.contrib.auth.get_user(request)
         voting.save()
-        return redirect('')
+        messages.add_message(request, messages.INFO, 'Вы успешно опубликовали новое голосование')
+        return redirect('/')
     return render(request, 'create_voting.html', context)
