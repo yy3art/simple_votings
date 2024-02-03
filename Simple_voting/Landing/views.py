@@ -138,7 +138,7 @@ def voting_page(request: HttpRequest, id) -> HttpResponse:
 
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
-    context = {'page_name': 'Список голосований', 'menu': default_menu(), 'pipka' : [i for i in range(len(models.Voting.objects.all()))]}
+    context = {'page_name': 'Список голосований', 'menu': default_menu(), 'votings' : [str(i) for i in range(1, len(models.Voting.objects.all()) + 1)]}
     return render(request, 'voting_list.html', context)
 
 
