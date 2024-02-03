@@ -2,7 +2,6 @@ import django.contrib.auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse, Http404
-
 from django.contrib.auth import authenticate, login, logout
 from Landing import models
 from Landing import forms
@@ -26,7 +25,8 @@ def default_menu() -> tuple:
              {'url': '/vote/', 'text': 'Голосовалка'},
              {'url': '/logout/', 'text': 'Выйти из аккаунта'},
              {'url': '/vote_link/', 'text': 'список голований'},
-             {'url': '/create_voting/', 'text': "Создать голосование"}
+             {'url': '/create_voting/', 'text': "Создать голосование"},
+             {'url': '/profile/', 'text': 'Профиль пользователя'},
     )
 
 
@@ -102,11 +102,10 @@ def voting_page(request: HttpRequest, id) -> HttpResponse:
         context['form'].persent_2 = record.persent_2
     except Voting.DoesNotExist:
         raise Http404
-    return render(request, 'voting.html', context)
 
-def authorization_page(request: HttpRequest) -> HttpResponse:
-    context = {'page_name': 'Авторизация', 'menu': default_menu()}
-    return render(request, 'authorization.html', context)
+def voting_page(request: HttpRequest) -> HttpResponse:
+    context = {'page_name': 'Голосовалка', 'menu': default_menu()}
+    return render(request, 'voting.html', context)
 
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
@@ -132,5 +131,9 @@ def create_voting_page(request):
         voting.user = django.contrib.auth.get_user(request)
         voting.save()
         messages.add_message(request, messages.INFO, 'Вы успешно опубликовали новое голосование')
-        return redirect('/')
+        return redirect('vote', voting.id)
     return render(request, 'create_voting.html', context)
+
+def profile_page(request: HttpRequest) -> HttpResponse:
+    context = {'page_name': 'Профиль', 'menu': default_menu()}
+    return render(request, 'profile.html', context)

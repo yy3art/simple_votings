@@ -16,9 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Landing import views
 
-from Landing import views# Тут нужно забить на ошибку
-# from simple_voting.Simple_voting.Landing.views import authorization_page
 
 
 urlpatterns = [
@@ -29,5 +28,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('vote/<int:id>', views.voting_page, name='vote'),
     path('vote_link/', views.voting_spispage),
-    path('create_voting/', views.create_voting_page)
+    path('create_voting/', views.create_voting_page),
+    path('profile/', views.profile_page),
 ]
