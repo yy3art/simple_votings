@@ -2,8 +2,7 @@
 
 {% block main %}
 <h1>Голосовалка</h1>
-<form>
-            <fieldset disabled>
+<form method="post">
                 <div class="form-group row">
                     <div class="col col-8">
                         Вопрос: {{ form.question }}<br>
@@ -11,13 +10,16 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    {% csrf_token %}
                     <div class="col">
                         Ответ 1: {{ form.answer1 }} - проголосовало {{ form.persent_1 }}%, голосов: {{ form.count_1 }}<br>
                         Ответ 2: {{ form.answer2 }} - проголосовало {{ form.persent_2 }}%, голосов: {{ form.count_2 }}<br>
                         Всего голосов: {{ form.count_all }}<br>
+                        Выбрать вариант ответа:<br>
+                        {{ form.choice }}<br>
                     </div>
+                    <button type="submit">Проголосовать</button>
                 </div>
-            </fieldset>
 </form>
 
 

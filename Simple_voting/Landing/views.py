@@ -7,8 +7,10 @@ from Landing import models
 from Landing import forms
 from Landing.forms import CreateVotingForm, ViewVotingForm
 from Landing.models import Voting
+
 from django.contrib.auth.models import User
 from django.contrib import messages
+
 
 
 #  логин kolkol
@@ -24,7 +26,6 @@ def default_menu() -> tuple:
              {'url': '/logout/', 'text': 'Выйти из аккаунта'},
              {'url': '/vote_link/', 'text': 'список голований'},
              {'url': '/create_voting/', 'text': "Создать голосование"},
-             {'url': '/vote_link/', 'text': 'список голований'},
              {'url': '/profile/', 'text': 'Профиль пользователя'},
     )
 
@@ -102,9 +103,38 @@ def voting_page(request: HttpRequest, id) -> HttpResponse:
     except Voting.DoesNotExist:
         raise Http404
 
-def voting_page(request: HttpRequest) -> HttpResponse:
+@login_required
+def voting_page(request: HttpRequest, id) -> HttpResponse:
     context = {'page_name': 'Голосовалка', 'menu': default_menu()}
+    try:
+        record = Voting.objects.get(id=id)
+        print(record.count_all, record.count_1, record.count_2)
+        context['form'] = ViewVotingForm()
+        context['form'].question = record.question
+        context['form'].answer1 = record.ans_1
+        context['form'].answer2 = record.ans_2
+        context['form'].count_1 = record.count_1
+        context['form'].count_2 = record.count_2
+        context['form'].count_all = record.count_all
+        context['form'].author = record.user
+        context['form'].persent_1 = record.persent_1
+        context['form'].persent_2 = record.persent_2
+        if request.method == 'POST':
+            form = ViewVotingForm(request.POST)
+            record.count_all += 1
+            if form['choice'].value() == "1":
+                record.count_1 += 1
+            elif form['choice'].value() == "2":
+                record.count_2 += 1
+            record.persent_1 = record.count_1 / record.count_all * 100
+            record.persent_2 = record.count_2 / record.count_all * 100
+            record.save()
+            return redirect('/vote/' + str(id))
+    except Voting.DoesNotExist:
+        raise Http404
+
     return render(request, 'voting.html', context)
+
 
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
