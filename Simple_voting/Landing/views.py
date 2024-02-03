@@ -86,10 +86,6 @@ def voting_page(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Голосовалка', 'menu': default_menu()}
     return render(request, 'voting.html', context)
 
-def authorization_page(request: HttpRequest) -> HttpResponse:
-    context = {'page_name': 'Авторизация', 'menu': default_menu()}
-    return render(request, 'authorization.html', context)
-
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Список голосований', 'menu': default_menu(), 'pipka' : [i for i in range(len(models.Voting.objects.all()))]}
@@ -111,5 +107,5 @@ def create_voting_page(request):
         voting.persent_1 = 0.0
         voting.persent_2 = 0.0
         voting.save()
-        return redirect('')
+        return redirect('/')
     return render(request, 'create_voting.html', context)
