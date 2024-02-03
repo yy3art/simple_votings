@@ -101,10 +101,6 @@ def voting_page(request: HttpRequest, id) -> HttpResponse:
         raise Http404
     return render(request, 'voting.html', context)
 
-def authorization_page(request: HttpRequest) -> HttpResponse:
-    context = {'page_name': 'Авторизация', 'menu': default_menu()}
-    return render(request, 'authorization.html', context)
-
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
     context = {'page_name': 'Список голосований', 'menu': default_menu(), 'pipka' : [i for i in range(len(models.Voting.objects.all()))]}
@@ -129,5 +125,5 @@ def create_voting_page(request):
         voting.user = django.contrib.auth.get_user(request)
         voting.save()
         messages.add_message(request, messages.INFO, 'Вы успешно опубликовали новое голосование')
-        return redirect('/')
+        return redirect('vote', voting.id)
     return render(request, 'create_voting.html', context)

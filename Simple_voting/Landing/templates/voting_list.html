@@ -72,7 +72,7 @@
   <div class="main-content">
     <div class="button-container">
       {% for i in pipka %}
-      <a href="link1.html" class="action-button">Button 1</a>
+      <a href="{% url 'vote' id={{ i.id }} %}" class="action-button">{{ i.question }}</a>
       {% endfor %}
     </div>
   </div>
