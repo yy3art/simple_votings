@@ -42,3 +42,14 @@ class CreateVotingForm(forms.Form):
         label='Ответ 2',
         required=True
     )
+
+class ViewVotingForm(forms.Form):
+    question = ''
+    answer1 = ''
+    answer2 = ''
+    count_1 = 0
+    count_2 = 0
+    count_all = 0
+    persent_1 = 0.0
+    persent_2 = 0.0
+    author = ''
