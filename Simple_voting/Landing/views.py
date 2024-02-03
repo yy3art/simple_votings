@@ -22,9 +22,8 @@ def default_menu() -> tuple:
              {'url': '/', 'text': 'Главная'},
              {'url': '/login/', 'text': 'Авторизация'},
              {'url': '/register/', 'text': 'Регистрация'},
-             {'url': '/vote/', 'text': 'Голосовалка'},
              {'url': '/logout/', 'text': 'Выйти из аккаунта'},
-             {'url': '/vote_link/', 'text': 'список голований'},
+             {'url': '/vote_link/', 'text': 'Список голований'},
              {'url': '/create_voting/', 'text': "Создать голосование"},
              {'url': '/profile/', 'text': 'Профиль пользователя'},
     )
