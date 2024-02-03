@@ -23,7 +23,9 @@ def default_menu() -> tuple:
              {'url': '/vote/', 'text': 'Голосовалка'},
              {'url': '/logout/', 'text': 'Выйти из аккаунта'},
              {'url': '/vote_link/', 'text': 'список голований'},
-             {'url': '/create_voting/', 'text': "Создать голосование"}
+             {'url': '/create_voting/', 'text': "Создать голосование"},
+             {'url': '/vote_link/', 'text': 'список голований'},
+             {'url': '/profile/', 'text': 'Профиль пользователя'},
     )
 
 
@@ -99,6 +101,9 @@ def voting_page(request: HttpRequest, id) -> HttpResponse:
         context['form'].persent_2 = record.persent_2
     except Voting.DoesNotExist:
         raise Http404
+
+def voting_page(request: HttpRequest) -> HttpResponse:
+    context = {'page_name': 'Голосовалка', 'menu': default_menu()}
     return render(request, 'voting.html', context)
 
 
@@ -127,3 +132,7 @@ def create_voting_page(request):
         messages.add_message(request, messages.INFO, 'Вы успешно опубликовали новое голосование')
         return redirect('vote', voting.id)
     return render(request, 'create_voting.html', context)
+
+def profile_page(request: HttpRequest) -> HttpResponse:
+    context = {'page_name': 'Профиль', 'menu': default_menu()}
+    return render(request, 'profile.html', context)
