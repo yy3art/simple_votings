@@ -130,7 +130,7 @@ def create_voting_page(request):
         voting.user = django.contrib.auth.get_user(request)
         voting.save()
         messages.add_message(request, messages.INFO, 'Вы успешно опубликовали новое голосование')
-        return redirect('vote', voting.id)
+        return redirect('/')
     return render(request, 'create_voting.html', context)
 
 def profile_page(request: HttpRequest) -> HttpResponse:
