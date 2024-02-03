@@ -1,16 +1,15 @@
 import django.contrib.auth
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, Http404
 
 from django.contrib.auth import authenticate, login, logout
 from Landing import models
 from Landing import forms
-from Landing.forms import CreateVotingForm
+from Landing.forms import CreateVotingForm, ViewVotingForm
 from Landing.models import Voting
 from django.contrib.auth.models import User
 from django.contrib import messages
-
 
 
 #  логин kolkol
@@ -85,8 +84,22 @@ def logout_page(request):
 
 
 @login_required
-def voting_page(request: HttpRequest) -> HttpResponse:
+def voting_page(request: HttpRequest, id) -> HttpResponse:
     context = {'page_name': 'Голосовалка', 'menu': default_menu()}
+    try:
+        record = Voting.objects.get(id=id)
+        context['form'] = ViewVotingForm()
+        context['form'].question = record.question
+        context['form'].answer1 = record.ans_1
+        context['form'].answer2 = record.ans_2
+        context['form'].count_1 = record.count_1
+        context['form'].count_2 = record.count_2
+        context['form'].count_all = record.count_all
+        context['form'].author = record.user
+        context['form'].persent_1 = record.persent_1
+        context['form'].persent_2 = record.persent_2
+    except Voting.DoesNotExist:
+        raise Http404
     return render(request, 'voting.html', context)
 
 def authorization_page(request: HttpRequest) -> HttpResponse:
