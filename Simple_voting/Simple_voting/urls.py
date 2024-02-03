@@ -19,13 +19,14 @@ from django.urls import path
 from Landing import views
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index_page),
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_page, name='logout'),
     path('register/', views.register, name='register'),
-    path('vote/', views.voting_page),
+    path('vote/<int:id>', views.voting_page, name='vote'),
     path('vote_link/', views.voting_spispage),
     path('create_voting/', views.create_voting_page)
 ]

@@ -2,6 +2,23 @@
 
 {% block main %}
 <h1>Голосовалка</h1>
+<form>
+            <fieldset disabled>
+                <div class="form-group row">
+                    <div class="col col-8">
+                        Вопрос: {{ form.question }}<br>
+                        Автор: {{ form.author }}<br>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        Ответ 1: {{ form.answer1 }} - проголосовало {{ form.persent_1 }}%, голосов: {{ form.count_1 }}<br>
+                        Ответ 2: {{ form.answer2 }} - проголосовало {{ form.persent_2 }}%, голосов: {{ form.count_2 }}<br>
+                        Всего голосов: {{ form.count_all }}<br>
+                    </div>
+                </div>
+            </fieldset>
+</form>
 
 
 {% endblock %}

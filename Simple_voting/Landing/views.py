@@ -1,13 +1,14 @@
-from django.shortcuts import render, redirect
-from django.http import HttpRequest, HttpResponse
-from django.contrib import messages
+import django.contrib.auth
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from Landing import forms
-from Landing import models
+from django.shortcuts import render, redirect
+from django.http import HttpRequest, HttpResponse, Http404
 from django.contrib.auth import authenticate, login, logout
-from Landing.forms import CreateVotingForm
+from Landing import models
+from Landing import forms
+from Landing.forms import CreateVotingForm, ViewVotingForm
 from Landing.models import Voting
+from django.contrib.auth.models import User
+from django.contrib import messages
 
 
 #  логин kolkol
@@ -82,9 +83,27 @@ def logout_page(request):
 
 
 @login_required
-def voting_page(request: HttpRequest) -> HttpResponse:
+def voting_page(request: HttpRequest, id) -> HttpResponse:
     context = {'page_name': 'Голосовалка', 'menu': default_menu()}
+    try:
+        record = Voting.objects.get(id=id)
+        context['form'] = ViewVotingForm()
+        context['form'].question = record.question
+        context['form'].answer1 = record.ans_1
+        context['form'].answer2 = record.ans_2
+        context['form'].count_1 = record.count_1
+        context['form'].count_2 = record.count_2
+        context['form'].count_all = record.count_all
+        context['form'].author = record.user
+        context['form'].persent_1 = record.persent_1
+        context['form'].persent_2 = record.persent_2
+    except Voting.DoesNotExist:
+        raise Http404
     return render(request, 'voting.html', context)
+
+def authorization_page(request: HttpRequest) -> HttpResponse:
+    context = {'page_name': 'Авторизация', 'menu': default_menu()}
+    return render(request, 'authorization.html', context)
 
 
 def voting_spispage(request: HttpRequest) -> HttpResponse:
@@ -92,6 +111,7 @@ def voting_spispage(request: HttpRequest) -> HttpResponse:
     return render(request, 'voting_list.html', context)
 
 
+@login_required
 def create_voting_page(request):
     context = {'page_name': 'Создать голосование', 'menu': default_menu()}
     context['form'] = CreateVotingForm()
@@ -106,6 +126,8 @@ def create_voting_page(request):
         voting.count_all = 0
         voting.persent_1 = 0.0
         voting.persent_2 = 0.0
+        voting.user = django.contrib.auth.get_user(request)
         voting.save()
+        messages.add_message(request, messages.INFO, 'Вы успешно опубликовали новое голосование')
         return redirect('/')
     return render(request, 'create_voting.html', context)
