@@ -53,4 +53,4 @@ class ViewVotingForm(forms.Form):
     persent_1 = 0.0
     persent_2 = 0.0
     author = ''
-
+    choice = forms.ChoiceField(choices={"1": "Ответ 1", "2": "Ответ 2"})
