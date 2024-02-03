@@ -1,10 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# models.CharField
-# models.IntegerField
-# models.FloatField
-
 
 class Voting(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -19,8 +15,5 @@ class Voting(models.Model):
     persent_1 = models.FloatField()
     persent_2 = models.FloatField()
 
-
-
-# Create your models here.
 
 
