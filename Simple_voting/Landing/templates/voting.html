@@ -1,7 +1,75 @@
 {% extends 'base_htmls/base.html' %}
 
 {% block main %}
+<style>
+body {
+  background-color: #ffffff; /* white background */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #228B22;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.content {
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+.features {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.btn {
+  background-color: #228B22;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #228B22;
+}
+
+.btn-success:hover {
+  background-color: #32CD32;
+}</style>
 <h1>Голосовалка</h1>
+<form method="post">
+                <div class="form-group row">
+                    <div class="col col-8">
+                        Вопрос: {{ form.question }}<br>
+                        Автор: {{ form.author }}<br>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    {% csrf_token %}
+                    <div class="col">
+                        Ответ 1: {{ form.answer1 }} - проголосовало {{ form.persent_1 }}%, голосов: {{ form.count_1 }}<br>
+                        Ответ 2: {{ form.answer2 }} - проголосовало {{ form.persent_2 }}%, голосов: {{ form.count_2 }}<br>
+                        Всего голосов: {{ form.count_all }}<br>
+                        Выбрать вариант ответа:<br>
+                        {{ form.choice }}<br>
+                    </div>
+                    <button type="submit">Проголосовать</button>
+                </div>
+</form>
 
 
 {% endblock %}

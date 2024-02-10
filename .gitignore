@@ -5,6 +5,11 @@ __pycache__/
 Landing/__pycache__/
 Simple_voting/__pycache__/
 **/__pycache__/
+<<<<<<< HEAD
+=======
+Simple_voting/Simple_voting/__pycache__/
+
+>>>>>>> voting_spis
 # C extensions
 *.so
 
